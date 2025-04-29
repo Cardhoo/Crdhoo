@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+h1, p {
+  text-align: center;
+}
+.container {
+  padding: 2rem;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+.button-table {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+.btn {
+  background-color: #8000ff;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  box-shadow: 0 0 15px #8000ff;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.bg-animation {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(128,0,255,0.3) 0%, transparent 70%);
+  animation: pulse 4s infinite;
+}
+@keyframes pulse {
+  0% {opacity: 0.4;}
+  50% {opacity: 0.7;}
+  100% {opacity: 0.4;}
+}
+
+
+/* Efek klik burst */
+.burst {
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  background: #a64dff;
+  border-radius: 50%;
+  animation: explode 0.8s forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 10px #a64dff;
+  }
+  100% {
+    transform: scale(25);
+    opacity: 0;
+    box-shadow: 0 0 100px #8000ff;
+  }
+}
+
+/* Background partikel debu ledakan */
+.bg-animation::before,
+.bg-animation::after {
+  content: '';
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(128,0,255,0.15) 0%, transparent 60%);
+  animation: rotateBg 30s linear infinite;
+  opacity: 0.4;
+}
+
+.bg-animation::after {
+  animation-direction: reverse;
+}
+
+@keyframes rotateBg {
+  0% { transform: rotate(0deg) translate(-25%, -25%); }
+  100% { transform: rotate(360deg) translate(-25%, -25%); }
+}
+
+#particles-js {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  background: #000;
+}
